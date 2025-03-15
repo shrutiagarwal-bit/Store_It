@@ -3,9 +3,9 @@
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
-
+import { createAccount } from "@/lib/actions/users.action";
+import { signInUser } from "@/lib/actions/users.action";
 import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input"; // Import Input here!
 import {
   Form,
   FormControl,
@@ -14,7 +14,7 @@ import {
   FormLabel,
   FormMessage,
 } from "@/components/ui/form";
-
+import { Input } from "@/components/ui/input";
 import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
@@ -31,7 +31,7 @@ const authFormSchema = (formType: FormType) => {
   });
 };
 
- const AuthForm = ({ type }: { type: FormType }) => {
+const AuthForm = ({ type }: { type: FormType }) => {
   const [isLoading, setIsLoading] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
   const [accountId, setAccountId] = useState(null);
@@ -46,20 +46,24 @@ const authFormSchema = (formType: FormType) => {
   });
 
   const onSubmit = async (values: z.infer<typeof formSchema>) => {
-    console.log(values);
-    // Add your authentication logic here
     setIsLoading(true);
-    try {
-        //Simulating an api call.
-        await new Promise((resolve) => setTimeout(resolve, 2000));
-        console.log("Form submitted", values);
-        setIsLoading(false);
-    } catch (error) {
-        setIsLoading(false);
-        setErrorMessage("An error occurred. Please try again.");
-        console.error("Form submission error", error);
-    }
+    setErrorMessage("");
 
+    try {
+      const user =
+        type === "sign-up"
+          ? await createAccount({
+              fullName: values.fullName || "",
+              email: values.email,
+            })
+          : await signInUser({ email: values.email });
+
+      setAccountId(user.accountId);
+    } catch {
+      setErrorMessage("Failed to create account. Please try again.");
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   return (
@@ -77,6 +81,7 @@ const authFormSchema = (formType: FormType) => {
                 <FormItem>
                   <div className="shad-form-item">
                     <FormLabel className="shad-form-label">Full Name</FormLabel>
+
                     <FormControl>
                       <Input
                         placeholder="Enter your full name"
@@ -85,6 +90,7 @@ const authFormSchema = (formType: FormType) => {
                       />
                     </FormControl>
                   </div>
+
                   <FormMessage className="shad-form-message" />
                 </FormItem>
               )}
@@ -98,6 +104,7 @@ const authFormSchema = (formType: FormType) => {
               <FormItem>
                 <div className="shad-form-item">
                   <FormLabel className="shad-form-label">Email</FormLabel>
+
                   <FormControl>
                     <Input
                       placeholder="Enter your email"
@@ -106,6 +113,7 @@ const authFormSchema = (formType: FormType) => {
                     />
                   </FormControl>
                 </div>
+
                 <FormMessage className="shad-form-message" />
               </FormItem>
             )}
@@ -117,6 +125,7 @@ const authFormSchema = (formType: FormType) => {
             disabled={isLoading}
           >
             {type === "sign-in" ? "Sign In" : "Sign Up"}
+
             {isLoading && (
               <Image
                 src="/assets/icons/loader.svg"
@@ -146,6 +155,8 @@ const authFormSchema = (formType: FormType) => {
           </div>
         </form>
       </Form>
+    
+     
     </>
   );
 };
