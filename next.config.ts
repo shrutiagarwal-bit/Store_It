@@ -8,14 +8,17 @@ const nextConfig: NextConfig = {
         protocol: "https",
         hostname: "cdn.pixabay.com",
       },
-      {
-        protocol: "https",
-        hostname: "img.freepik.com",
-      },
+       
       {
         protocol: "https",
         hostname: "cloud.appwrite.io",
       },
+     
+        {
+          protocol: "https",
+          hostname: "kansai-resilience-forum.jp",
+          pathname: "/wp-content/uploads/**",
+        },
     ],
   },
 };
