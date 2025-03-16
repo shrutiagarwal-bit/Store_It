@@ -4,7 +4,7 @@ import { Account, Avatars, Client, Databases, Storage } from "node-appwrite";
 import { appwriteConfig } from "@/lib/appwrite/config";
 import { cookies } from "next/headers";
 
-export const createSessionClient = async () => {
+export const createSessionClient = async (value: any) => {
   const client = new Client()
     .setEndpoint(appwriteConfig.endpointUrl)
     .setProject(appwriteConfig.projectId);
