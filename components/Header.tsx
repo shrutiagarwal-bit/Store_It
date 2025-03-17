@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import Image from "next/image";
 import Search from "./Search";
 import FileUploader from "./FileUploader";
+import { signOutUser } from "@/lib/actions/users.action";
 
 
 const Header = () => {
@@ -13,6 +14,11 @@ const Header = () => {
       <div className="header-wrapper">
         <FileUploader />
         <form
+          action={async () => {
+            "use server";
+
+            await signOutUser();
+          }}
         >
           <Button type="submit" className="sign-out-button">
             <Image

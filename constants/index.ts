@@ -26,4 +26,4 @@ export const navItems = [
     },
   ];
   export const avatarPlaceholderUrl =
-  "https://cdn.pixabay.com/photo/2013/07/13/12/07/avatar-159236_640.png";
+  "https://img.freepik.com/free-psd/3d-illustration-person-with-sunglasses_23-2149436188.jpg?t=st=1742216797~exp=1742220397~hmac=a94c96e091383ad7b08737560e27bce24215f77df8f112a0025e5558c5647ce2&w=1380";
