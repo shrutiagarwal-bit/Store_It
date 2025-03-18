@@ -27,3 +27,60 @@ export const navItems = [
   ];
   export const avatarPlaceholderUrl =
   "https://img.freepik.com/free-psd/3d-illustration-person-with-sunglasses_23-2149436188.jpg?t=st=1742216797~exp=1742220397~hmac=a94c96e091383ad7b08737560e27bce24215f77df8f112a0025e5558c5647ce2&w=1380";
+
+  export const actionsDropdownItems = [
+    {
+      label: "Rename",
+      icon: "/assets/icons/edit.svg",
+      value: "rename",
+    },
+    {
+      label: "Details",
+      icon: "/assets/icons/info.svg",
+      value: "details",
+    },
+    {
+      label: "Share",
+      icon: "/assets/icons/share.svg",
+      value: "share",
+    },
+    {
+      label: "Download",
+      icon: "/assets/icons/download.svg",
+      value: "download",
+    },
+    {   
+      label: "Delete",
+      icon: "/assets/icons/delete.svg",
+      value: "delete",
+    },
+  ];
+
+  export const sortTypes = [
+    {
+      label: "Date created (newest)",
+      value: "$createdAt-desc",
+    },
+    {
+      label: "Created Date (oldest)",
+      value: "$createdAt-asc",
+    },
+    {
+      label: "Name (A-Z)",
+      value: "name-asc",
+    },
+    {
+      label: "Name (Z-A)",
+      value: "name-desc",
+    },
+    {
+      label: "Size (Highest)",
+      value: "size-desc",
+    },
+    {
+      label: "Size (Lowest)",
+      value: "size-asc",
+    },
+  ];
+
+  export const MAX_FILE_SIZE = 50 * 1024 * 1024; // 50MB
