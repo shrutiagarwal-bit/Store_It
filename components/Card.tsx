@@ -1,5 +1,5 @@
 "use client"; // Prevents Next.js hydration errors
-
+import ActionDropdown from "./ActionDropdown";
 import React from "react";
 import { Models } from "node-appwrite";
 import { Link } from "lucide-react"; // If this is an icon, it's fine
@@ -20,7 +20,7 @@ const Card = ({ file }: { file: Models.Document }) => {
                     imageClassName="!size-11"
                 />
                 <div className="flex flex-col items-end justify-between">
-                    <span>Actions Dropdown</span>
+                    <span><ActionDropdown file = {file}/></span>
                     <p className="body-1">{convertFileSize(file.size)}</p>
                 </div>
             </div>
