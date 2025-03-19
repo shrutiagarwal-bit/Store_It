@@ -13,6 +13,12 @@ declare interface SearchParamProps {
   searchParams?: Promise<{ [key: string]: string | string[] | undefined }>;
 }
 
+declare interface UploadFileProps {
+  file: File;
+  ownerId: string;
+  accountId: string;
+  path: string;
+}
 declare interface GetFilesProps {
   types: FileType[];
   searchText?: string;
