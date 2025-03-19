@@ -6,6 +6,8 @@ import Card from "@/components/Card";
 import { getFileTypesParams } from "@/lib/utils";
 const Page = async ({ searchParams, params }: SearchParamProps) => {
     const type = ((await params)?.type as string) || "";
+    const searchText = ((await searchParams)?.query as string) || "";
+    const sort = ((await searchParams)?.sort as string) || "";
 
 
 
@@ -17,7 +19,7 @@ const Page = async ({ searchParams, params }: SearchParamProps) => {
 
 
 
-    const files = await getFiles({types});
+    const files = await getFiles({ types, searchText, sort });
     return (
         <div className="page-container">
             <section className="w-full">
