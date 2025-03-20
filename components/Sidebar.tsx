@@ -61,13 +61,7 @@ const Sidebar = ({ fullName, avatar, email }: Props) => {
         </ul>
       </nav>
 
-      <Image
-        src="/illustration.svg"
-        alt="logo"
-        width={506}
-        height={418}
-        className="w-full"
-      />
+      
        <div className="sidebar-user-info">
         <Image
           src={avatar}

@@ -20,13 +20,7 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
               This is a place where you can store all your documents.
             </p>
           </div>
-          <Image
-            src="/Illustration.png"
-            alt="Files"
-            width={342}
-            height={342}
-            className="transition-all hover:rotate-2 hover:scale-105"
-          />
+          
         </div>
       </section>
 
