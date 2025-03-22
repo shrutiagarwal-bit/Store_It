@@ -63,8 +63,8 @@ Make sure you have the following installed on your machine:
 **Cloning the Repository**
 
 ```bash
-git clone https://github.com/JavaScript-Mastery-Pro/storage_management_solution.git
-cd storage_management_solution
+git clone https://github.com/shrutiagarwal-bit/store_it.git
+cd store_it
 ```
 
 **Installation**
